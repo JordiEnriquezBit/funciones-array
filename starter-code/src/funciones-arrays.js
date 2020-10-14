@@ -1,6 +1,32 @@
 // Find the maximum
+function maxOfTwoNumbers(var1, var2) {
+
+  if (var1 > var2) {
+    return var1;
+  } else {
+    return var2;
+  }
+}
+
+
+
 
 // Finding Longest Word
+
+function findLongestWord(array) {
+  let word = "";
+  if (array.length <= 0) {
+    return undefined;
+  }
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].length > word.length) {
+      word = array[i];
+    }
+
+  }
+  return word;
+}
+
 let words = [
   'mystery',
   'brother',
@@ -11,19 +37,71 @@ let words = [
   'crackpot'
 ];
 
-    
+
 
 
 console.log(findLongestWord(words));
 // Calculating a Sum
+function sumArray(array) {
+
+  if (array.length <= 0) {
+    return 0;
+  }
+
+  let sum = array.reduce(function (a, b) {
+    return a + b;
+  }, 0);
+
+  return sum;
+
+}
 
 let numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
 // Calculate the Average
 
+function averageNumbers(array) {
+
+  if (array.length <= 0) {
+    return undefined;
+  }
+
+  let sum = array.reduce(function (a, b) {
+    return a + b;
+  }, 0);
+
+  sum = sum / array.length;
+  return sum;
+}
+
 let numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
 // Array of Strings
+
+
+function averageWordLength(array) {
+
+  if (array.length <= 0) {
+    return undefined;
+  }
+  let num = 0;
+  for (let i = 0; i < array.length; i++) {
+    num += array[i].length;
+  }
+  return num / array.length;
+}
+
+
+function find_unique_characters(string) {
+  var unique = '';
+  for (var i = 0; i < string.length; i++) {
+    if (unique.indexOf(string[i]) == -1) {
+      unique += string[i];
+    }
+  }
+  return unique;
+}
+
 let wordsArr = [
   'seat',
   'correspond',
@@ -38,6 +116,39 @@ let wordsArr = [
 ];
 
 // Unique Arrays
+
+function uniquifyArray(array) {
+
+  if (array.length <= 0) {
+    return undefined;
+  }
+  if (array.length == 1) {
+    return array;
+  }
+
+
+  let array2 = [array[0]];
+
+  let flag = true;
+  for (let i = 0; i < array.length; i++) {
+
+    flag = true;
+
+    for (let x = 0; x < array2.length; x++) {
+      if (array[i] == array2[x]) {
+        flag = false;
+      }
+    }
+    if (flag) {
+      array2.push(array[i])
+    }
+  }
+
+  return array2;
+}
+
+
+
 let wordsUnique = [
   'crab',
   'poison',
@@ -53,6 +164,25 @@ let wordsUnique = [
 ];
 
 // Finding Elements
+
+function doesWordExist(array, word) {
+  if (array.length <= 0) {
+    return false;
+  }
+
+  if (array.length == 1) {
+    return true;
+  }
+  let flag = false;
+  for (let i = 0; i < array.length; i++) {
+    if (word == array[i]) {
+      flag = true;
+    }
+  }
+
+  return flag;
+}
+
 let wordsFind = [
   'machine',
   'subset',
@@ -65,6 +195,26 @@ let wordsFind = [
 ];
 
 // Counting Repetion
+
+
+function howManyTimes(array, word) {
+  if (array.length <= 0) {
+    return undefined;
+  }
+
+  let sum = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (word == array[i]) {
+      sum++;
+    }
+  }
+
+
+  return sum;
+
+
+}
+
 let wordsCount = [
   'machine',
   'matter',
@@ -79,6 +229,77 @@ let wordsCount = [
   'matter'
 ];
 // Bonus Quest
+
+
+function greatestProduct(array) {
+
+  console.log(array);
+
+  let sum = 0;
+
+  let flag = true;
+  for (let i = 0; i < array.length; i++) {
+    for (let x = 0; x < array[i].length; x++) {
+      if (array[i][x] != 1) {
+        flag = false;
+      }
+
+    }
+
+    if (flag) {
+      return 1;
+    }
+  }
+
+
+  let sumH = 0;
+  for (let i = 1; i < array.length; i++) {
+    for (let x = 0; x < array.length; x += 4) {
+      let sums = array[i][x] * array[i][x + 1] * array[i][x + 2] * array[i][x + 3];
+      if (sums > sumH) {
+        sumH = sums;
+      }
+    }
+
+  }
+
+  let sumV = 0;
+  for (let i = 0; i < array.length; i += 4) {
+    for (let x = 0; x < array.length; x++) {
+      let sums = array[i][x] * array[i + 1][x] * array[i + 2][x] * array[i + 3][x];
+      if (sums > sumV) {
+        sumV = sums;
+      }
+    }
+
+  }
+
+  console.log("hola")
+  let sumD = 0;
+  for (let i = 0; i < array.length; i++) {
+    for (let x = 0; x < array.length; x++) {
+      if (array[i + 3][x + 3] != undefined) {
+        let sums = array[i][x] * array[i + 1][x + 1] * array[i + 2][x + 2] * array[i + 3][x + 3];
+        console.log(array[i][x] +" - "+ array[i+1][x+1]+" - "+ array[i+2][x+2] +" - "+array[i+3][x+3])
+        if (sums > sumD) {
+          sumD = sums;
+        }
+      }
+
+    }
+
+  }
+
+  console.log("hola")
+
+
+
+  console.log(sumH);
+  console.log(sumV);
+  console.log(sum);
+
+  return sum;
+}
 
 let matrix = [
   [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
